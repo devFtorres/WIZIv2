@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} WIZI {% endblock title %}
+
+{% block content %}
+
+{% if company == NULL %}
+    <h1>E necessario ter uma pagina para adicionar empregados</h1>
+    <br/>
+    <a href="/companies/"><button type="submit" class="btn btn-success">WIZI</button></a>
+{% else %}
+  <section id="" class="pt-130" style="background-color: grey">
+    <div class="container">
+      <div class="row justify-content-center">
+          {% for separator in separators %}
+            <div class="col-lg-8">
+              <div class="testimonial_active_wrapper">
+                  <div class="testimonial_active">
+                        <div class="single_testimonial text-center">
+                            <img src=" {{ separator.image.url }} " alt="author" class="rounded-image" style="height: 100px; width:auto">
+                            <h5 class="author_name"> {{ separator.title }} </h5>
+                            <p> {{ separator.desc }} </p>
+                        </div>
+                  </div>
+              </div>
+              <a href="/separators/{{ separator.id }}/update/"><button type="submit" class="btn btn-success">Editar</button></a>
+              <a href="/separators/{{ separator.id }}/delete/"><button type="submit" class="btn btn-danger">Eliminar</button></a>
+            </div>
+          {% endfor %}
+        </div> <!-- row -->
+      </div> <!-- container -->
+    </section>
+
+
+
+    <div class="d-flex align-items-center justify-content-center">
+      <a href=" {% url 'create-separator' %} "><button type="submit" class="btn btn-success">Adicionar Componente</button></a>
+    </div>
+{% endif %}
+{% endblock content %}
+

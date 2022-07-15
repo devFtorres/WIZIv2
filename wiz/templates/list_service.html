@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} WIZI {% endblock title %}
+
+{% block content %}
+
+
+{% if company %}
+    {% if services|length > 0 %}
+        <section id="services" class="features_area pt-120 h-auto">
+            <div class="container ">
+                <div class="row  justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="section_title text-center pb-25">
+                            <h4 class="title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">Serviços</h4>
+                        </div> <!-- section title -->
+                    </div>
+                </div> <!-- row -->
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            
+                                {% for service in services %}
+                                    <div class="single_features text-center mt-60 wow fadeInUp" data-wow-duration="1.3s"
+                                        data-wow-delay="0.2s">
+                                            <h4 class="features_title">{{ service.title }}</h4>
+                                            <p>{{ service.desc }}</p>
+                                    </div> <!-- single features -->
+                                    
+                                
+                                    
+                                    <a href="/service/{{ service.id }}/update/"><button type="submit" class="btn btn-success">Editar</button></a>
+                                    <a href="/service/{{ service.id }}/delete/"><button type="submit" class="btn btn-danger">Eliminar</button></a>
+                                {% endfor %}
+                            
+                        </div>
+                    </div> <!-- row -->
+                
+            </div> <!-- container -->
+        </section>
+    {% endif %}
+
+
+
+    <div class="d-flex align-items-center justify-content-center">
+        <a href=" {% url 'create-service' %} "><button type="submit" class="btn btn-success">Adicionar Serviço</button></a>
+    </div>
+{% else %}
+    <h1>E necessário ter uma página para adicionar serviços</h1>
+    <br/>
+    <a href="/companies/"><button type="submit" class="btn btn-success">WIZI</button></a>
+{% endif %}
+
+
+
+        
+
+
+
+
+
+
+
+
+{% endblock content %}

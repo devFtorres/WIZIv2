@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} WIZI {% endblock title %}
+
+{% block content %}
+
+{% if company != None %}
+      {% if plans|length == 0 %}
+        <h1>Nao tem planos ainda ...</h1>
+        <a href=" {% url 'create-plan' %} "><button type="submit" class="btn btn-success">Adicionar plano</button></a>
+      {% else %}
+
+            <section id="pricing" class="pricing_area pt-120 pb-130">
+              <div class="container">
+                  <div class="row justify-content-center">
+                      <div class="col-lg-6">
+                          <div class="section_title text-center pb-25">
+                              <h4 class="title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">Os nossos planos</h4>
+                          </div> <!-- section title -->
+                      </div>
+                  </div> <!-- row -->
+
+                  <div class="row justify-content-center">
+                          {% for plan in plans %}
+                              <div class="col-lg-4 col-md-8 col-sm-10">
+                                  <div class="single_pricing text-center mt-30 wow fadeInUp" data-wow-duration="1.3s"
+                                      data-wow-delay="0.2s">
+                                      <h4 class="pricing_title">{{ plan.title }}</h4>
+                                      <span class="price">{{ plan.price }} €</span>
+                                      <p>{{ plan.desc }}</p>
+                                  </div> <!-- single pricing -->
+                                  <a href="/plans/{{ plan.id }}/update/"><button type="submit" class="btn btn-success">Editar</button></a>
+                  <a href="/plans/{{ plan.id }}/delete/"><button type="submit" class="btn btn-danger">Eliminar</button></a>
+                              </div>
+                      {% endfor %}
+
+                  </div> <!-- row -->
+
+
+              </div> <!-- container -->
+            </section>
+
+
+
+      {% endif %}
+    {% else %}
+      <h1>E necessario ter uma pagina para adicionar produtos</h1>
+      <a href="/companies/"><button type="submit" class="btn btn-success">Gerir pagina</button></a>
+    {% endif %}
+
+{% endblock content %}
+
+
+
+<a href="/plans/{{ plan.id }}/update/"><button type="submit" class="btn btn-success">Editar</button></a>
+                  <a href="/plans/{{ plan.id }}/delete/"><button type="submit" class="btn btn-danger">Eliminar</button></a>

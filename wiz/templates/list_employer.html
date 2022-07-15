@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Create Service {% endblock title %}
+
+{% block content %}
+    {% if company != None %}
+      {% if employers|length == 0 %}
+          <h1>Nao tem empregados ainda ...</h1>
+
+      {% else %}
+            <section id="team" class="team_area pt-120 pb-130">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="section_title text-center pb-25">
+                                <h4 class="title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">Os nossos profissionais</h4>
+                            </div> <!-- section title -->
+                        </div>
+                    </div> <!-- row -->
+                    <div class="row justify-content-center team_active">
+            
+                    {% for employer in employers %}
+                        <div class="col-lg-4 col-md-8 col-sm-10">
+                            <div class="single_team mt-30 wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">
+                                <img src="{{ employer.image.url }}" alt="team">
+                                <div class="team_content" style="width: 200px">
+                                    <h4 class="team_name"><a href="#0">{{ employer.name }}</a></h4>
+                                    <p>{{ employer.funcion }}</p>
+                                </div>
+                            </div> <!-- single team -->
+                            <a href="/employers/{{ employer.id }}/update/"><button type="submit" class="btn btn-success">Editar</button></a>
+                            <a href="/employers/{{ employer.id }}/delete/"><button type="submit" class="btn btn-danger">Eliminar</button></a>
+                        </div>
+                        {% endfor %}
+                    </div> <!-- row -->
+                </div> <!-- container -->
+            </section>
+
+      {% endif %}
+
+
+    </div>
+          <div class="d-flex align-items-center justify-content-center">
+            <a href=" {% url 'create-employer' %} "><button type="submit" class="btn btn-success">Adicionar Empregado</button></a>
+          </div>
+    {% else %}
+        <h1>E necessario ter uma pagina para adicionar empregados</h1>
+        <a href="/companies/"><button type="submit" class="btn btn-success">Gerir Pagina</button></a>
+
+    {% endif %}
+
+
+{% endblock content %}

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} WIZI {% endblock title %}
+
+{% block content %}
+<div class="w-100 h-100 p-3" style="background-color: white;">
+{% if company %}
+    {% if why != '' %}
+        
+        <section id="features" class="features_area pt-120">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="section_title text-center pb-25">
+                            <h4 class="title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">Porque nós ?</h4>
+                        </div> <!-- section title -->
+                    </div>
+                </div> <!-- row -->
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-7">
+                        <div class="single_features text-center mt-30 wow fadeInUp" data-wow-duration="1.3s"
+                            data-wow-delay="0.2s">
+                            <h4 class="features_title">{{ why.title1 }}</a></h4>
+                            <p>{{ why.reason1 }}</p>
+                        </div> <!-- single features -->
+                    </div>
+                    <div class="col-lg-4 col-md-7">
+                        <div class="single_features text-center mt-30 wow fadeInUp" data-wow-duration="1.3s"
+                            data-wow-delay="0.4s">
+                            <h4 class="features_title">{{ why.title2 }}</a></h4>
+                            <p>{{ why.reason2 }}</p>
+                        </div> <!-- single features -->
+                    </div>
+                    <div class="col-lg-4 col-md-7">
+                        <div class="single_features text-center mt-30 wow fadeInUp" data-wow-duration="1.3s"
+                            data-wow-delay="0.6s">
+                            <h4 class="features_title">{{ why.title3 }}</a></h4>
+                            <p>{{ why.reason3 }}</p>
+                        </div> <!-- single features -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </section>
+
+        <div class="h-50 align-items-center d-flex">
+            <a href="/why/update/"><button type="submit" class="btn btn-success mx-2">Editar</button></a>
+            <a href="/why/delete/"><button type="submit" class="btn btn-danger mx-2">Eliminar</button></a>
+        </div>
+
+
+    
+    {% else %}
+        <a href=" {% url 'create-why' %} "><button type="submit" class="btn btn-primary">Criar secção</button></a>
+    {% endif %}
+          
+{% else %}
+
+<h1>Ainda nao tem um pagina</h1>
+    <br/>
+    <a href="/companies/"><button type="submit" class="btn btn-primary">WIZI</button></a>
+
+
+{% endif %}
+
+
+
+
+
+
+
+
+</div>
+{% endblock content %}
