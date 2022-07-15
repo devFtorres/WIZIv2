@@ -461,7 +461,7 @@ def listing_new(request):
         mainnew = ''
 
     try:
-        news = New.objects.filter(company=company).order_by('-id')[:3]
+        news = New.objects.filter(company=company).order_by('-id')
     except New.DoesNotExist:
         news = None
 
