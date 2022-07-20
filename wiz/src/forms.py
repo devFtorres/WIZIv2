@@ -13,7 +13,7 @@ class CompanyForm(ModelForm):
             "address",
             "email",
             "slug",
-            "logo",
+            "wallpapper",
             "welcome",
         ]
 

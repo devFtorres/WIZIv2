@@ -40,13 +40,14 @@
                     </div> <!-- container -->
                 </div> <!-- header navbar -->
                 <div class="header_hero">
-                    <div class="single_hero bg_cover d-flex align-items-center" style="background-image:url('{{ company.logo.url }}')">
+                    <div class="single_hero bg_cover d-flex align-items-center" style="background-image:url('{{ company.wallpapper.url }}')">
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-lg-8 col-md-10">
                                     <div class="hero_content text-center">
                                         <h2 class="hero_title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">{{ company.company}}</h2>
                                         <p class="wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s">{{ company.welcome}}</p>
+                                        <p class="wow fadeInUp text-light" data-wow-duration="1.3s" data-wow-delay="0.5s">{{ company.about}}</p>
                                         {% if why != '' %}
                                         <a href="#features" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.8s">Veja mais!</a>
                                         {% endif %}
@@ -77,26 +78,29 @@
                     <div class="col-lg-4 col-md-7">
                         <div class="single_features text-center mt-30 wow fadeInUp" data-wow-duration="1.3s"
                             data-wow-delay="0.2s">
-                            <h4 class="features_title"> {{ why.title1 }} </a></h4>
+                            <h1 class="features_title"> {{ why.title1 }} </a></h1>
                             <p>{{ why.reason1 }}</p>
                         </div> <!-- single features -->
                     </div>
                     <div class="col-lg-4 col-md-7">
                         <div class="single_features text-center mt-30 wow fadeInUp" data-wow-duration="1.3s"
                             data-wow-delay="0.4s">
-                            <h4 class="features_title">{{ why.title2 }}</a></h4>
+                            <h1 class="features_title">{{ why.title2 }}</a></h1>
                             <p>{{ why.reason2 }}</p>
                         </div> <!-- single features -->
                     </div>
                     <div class="col-lg-4 col-md-7">
                         <div class="single_features text-center mt-30 wow fadeInUp" data-wow-duration="1.3s"
                             data-wow-delay="0.6s">
-                            <h4 class="features_title">{{ why.title3 }}</a></h4>
+                            <h1 class="features_title">{{ why.title3 }}</a></h1>
                             <p>{{ why.reason3 }}</p>
                         </div> <!-- single features -->
                     </div>
                 </div> <!-- row -->
             </div> <!-- container -->
+        <br/>
+        <br/>
+        <br/>
         </section>
   {% endif %}
 
@@ -206,6 +210,9 @@
                     {% endfor %}
                 </div> <!-- row -->
             </div> <!-- container -->
+            <br/>
+            <br/>
+            <br/>
         </section>
 
 
@@ -336,7 +343,7 @@
                           <input type="email" placeholder="Email" name="email" id="email" required>
                       </div> <!-- single form -->
                   </div>
-                 
+                  <input id="mailf" name="mailf" type="hidden" value=" {{ company.email }} ">
                   <div class="col-lg-12">
                       <div class="single_form">
                           <input type="text" placeholder="Subject" name="subject" id="subject" required>

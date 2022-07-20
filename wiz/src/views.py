@@ -643,9 +643,9 @@ def service_create(request):
 @login_required
 def service_update(request, pk):
     service = Service.objects.get(id=pk)
-    form = NewForm(instance=service)
+    form = ServiceForm(instance=service)
     if request.method == "POST":
-        form = ServiceForm(request.POST, request.FILES, instance=service)
+        form = ServiceForm(request.POST, instance=service)
         if form.is_valid():
             form.save()
             return redirect("/service/")
@@ -704,13 +704,14 @@ def my_wiz_view(request, slug):
         name = request.POST.get('name')
         email = request.POST.get('email')
         message = request.POST.get('message')
-        mailf = request.POST.get('mailcompany')
+        mailf = request.POST.get('mailf')
+
 
         send_mail(
         sub, #subject
         message+name, #message
-        mailf, #from
-        [email], #to email
+        None, #from
+        [mailf], #to email
 
     )
         return render(request, "my_wiz_view.html", context)

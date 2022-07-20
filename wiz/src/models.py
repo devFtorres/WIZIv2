@@ -14,7 +14,7 @@ class Company(models.Model):
     address = models.CharField(max_length=100)
     email = models.EmailField(blank=True, null=True)
     slug = models.SlugField(null=False)
-    logo = models.ImageField(default="default.png")
+    wallpapper = models.ImageField(default="default.png")
     welcome = models.CharField(blank=True, null=True, default="Welcome", max_length=200)
 
     def __str__(self):
